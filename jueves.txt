@@ -1,0 +1,33 @@
+
+SELECT * from personas
+
+SELECT * from materia;
+SELECT per.idper,per.nombre,per.apaterno,per.amaterno,per.email,per.tel,dc.ci 
+FROM personas per join docente dc on per.idper=dc.idper
+where per.estado = 'T'
+SELECT * FROM areas;
+SELECT * FROM modulos;
+SELECT * from semestre;
+SELECT * from turno;
+SELECT * from destinos;
+
+
+select * from programacion_destinos;
+
+
+
+INSERT INTO programacion_destinos (fecha,estado,iddestinos,idturno,idsemestre,idmodulo,idarea,idper,idmat)
+VALUES('22-02-2019','T',2,2,2,2,2,5,2);
+SELECT * from areas
+
+select  prd.fecha,ds.nombre as empresa,tr.turno,sm.nombresem,sm.anio,md.modulo,ar.nombre as area,pr.nombre as docente,pr.apaterno,mt.nombre as materia
+from programacion_destinos prd JOIN destinos ds on prd.iddestinos = ds.iddestinos  join turno tr on tr.idturno =  prd.idturno
+join semestre sm on sm.idsemestre=prd.idsemestre join modulos md on md.idmodulo = prd.idmodulo join areas ar on ar.idareas= prd.idarea
+join personas pr on pr.idper = prd.idper  join docente dc on dc.idper = pr.idper join materia mt on mt.idmat = prd.idmat
+
+
+SELECT * from vistias_tecnicas
+
+
+insert into vistias_tecnicas(objetivo,descripcion,informe,duracion,idprog)VALUES('hacer conocer sobre el cuidado del medio ambiente','terner en cuenta el cuidado de la cuidad','informe1','00:30',1);
+select * from vistias_tecnicas

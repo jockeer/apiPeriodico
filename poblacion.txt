@@ -1,0 +1,113 @@
+select* FROM personas;
+SELECT * from administrador;
+SELECT * from docente;
+
+select * from roles;
+
+insert into roles(nombre) VALUES('Administrador');
+insert into roles(nombre) VALUES('Jefes');
+insert into roles(nombre) VALUES('Invitado');
+insert into roles(nombre) VALUES('Docente');
+
+insert into personas (nombre,apaterno,amaterno,email,tel,foto,estado,idrol) VALUES('joauqin','cortez','antelo','joaquin@gmail.com','7505777',' ','T',1);
+insert into personas (nombre,apaterno,amaterno,email,tel,foto,estado,idrol) VALUES('mario','antelo','cortez','mario@gmail.com','987616',' ','T',1);
+insert into personas (nombre,apaterno,amaterno,email,tel,foto,estado,idrol) VALUES('jose','osorio','balvin','jose@gmail.com','13246','','T',2);
+insert into personas (nombre,apaterno,amaterno,email,tel,foto,estado,idrol) VALUES('docente1','docente1','docente1','docente1@gmail.com','13246',' ','T',3);
+insert into personas (nombre,apaterno,amaterno,email,tel,foto,estado,idrol) VALUES('docente2','docente2','docente2','docente2@gmail.com','13246',' ','T',3);
+
+insert into docente (ci,idper) VALUES('465456565',4);
+insert into docente (ci,idper) VALUES('687985131',5);
+
+select * from materia;
+
+INSERT into materia(siglas,nombre) VALUES('MD','MEDIO AMBIENTE');
+INSERT into materia(siglas,nombre) VALUES('INT','INTRODUCCION A LA VIDA UNIVERSITARIA');
+
+
+SELECT * FROM destinos;
+
+INSERT INTO destinos (nombre,estado) VALUES('CURICHI LA MADRE','T');
+INSERT INTO destinos (nombre,estado) VALUES('JARDIN BOTANICO','T');
+
+
+SELECT * FROM modulos;
+
+INSERT INTO modulos (modulo) VALUES(0);
+INSERT INTO modulos (modulo) VALUES(1);
+INSERT INTO modulos (modulo) VALUES(2);
+INSERT INTO modulos (modulo) VALUES(3);
+INSERT INTO modulos (modulo) VALUES(4);
+INSERT INTO modulos (modulo) VALUES(5);
+
+
+SELECT * FROM semestre;
+
+INSERT INTO semestre(nombresem,anio) VALUES('SEMESTRE 1', '2019');
+INSERT INTO semestre(nombresem,anio) VALUES('SEMESTRE 2', '2019');
+
+SELECT * FROM areas;
+
+SELECT * FROM facultad;
+
+SELECT * FROM carreras;
+
+INSERT INTO facultad(nombre) VALUES('HUMANIDADES');
+INSERT INTO facultad(nombre) VALUES('CIENCIAS ECONOMICAS');
+INSERT INTO facultad(nombre) VALUES('TECONOLOGIA');
+
+INSERT INTO carreras(nombre,idfacultad) VALUES('SISTEMAS',3);
+INSERT INTO carreras(nombre,idfacultad) VALUES('ING. COMERCIAL',2);
+INSERT INTO carreras(nombre,idfacultad) VALUES('PSICLOGIA',1);
+
+INSERT INTO areas(nombre,idcarreras) VALUES('DESAROLLO',1);
+INSERT INTO areas(nombre,idcarreras) VALUES('CALCULO FINANCIERO',2);
+INSERT INTO areas(nombre,idcarreras) VALUES('FILOSOFIA',3);
+
+
+SELECT * from turno
+insert INTO turno(turno) VALUES('7:15-10:00');
+insert INTO turno(turno) VALUES('10:15-13:00');
+insert INTO turno(turno) VALUES('13:15-16:00');
+insert INTO turno(turno) VALUES('16:15-19:00');
+insert INTO turno(turno) VALUES('19:15-21:45');
+SELECT * FROM programacion_destinos;
+
+INSERT INTO programacion_destinos (fecha,estado,iddestinos,idturno,idsemestre,idmodulo,idarea,idper,idmat)
+VALUES('22-02-2019','T',1,1,1,1,1,4,1);
+
+
+
+INSERT INTO programacion_destinos (fecha,estado,iddestinos,idturno,idsemestre,idmodulo,idarea,idper,idmat)
+VALUES('22-02-2019','T',2,2,2,2,2,5,2);
+
+SELECT * from vistias_tecnicas
+
+insert into vistias_tecnicas(objetivo,descripcion,informe,duracion,idprog)VALUES('hacer conocer sobre el cuidado del medio ambiente','terner en cuenta el cuidado de la cuidad','informe1','00:30',1);
+insert into vistias_tecnicas(objetivo,descripcion,informe,duracion,idprog)VALUES('hacer que los alumnos tengan conocimientos sobre el ecosistema','tener en cuenta toda la mala costumbre de botar la basura en la calle ','informe2','00:50',2);
+
+select * from vistias_tecnicas
+
+select * from programacion_destinos
+
+
+select per.nombre as docente ,ds.nombre as empresa,vs.objetivo,vs.descripcion,vs.duracion,pr.fecha as fechaProgramada
+
+        from programacion_destinos pr join vistias_tecnicas vs on pr.idprog=vs.idprog join materia mt on mt.idmat = pr.idmat
+
+        join destinos ds on ds.iddestinos = pr.iddestinos join docente dc on dc.idper = pr.idper join personas per on per.idper = dc.idper
+
+
+
+SELECT * from materia;
+SELECT per.idper,per.nombre,per.apaterno,per.amaterno,per.email,per.tel,dc.ci 
+FROM personas per join docente dc on per.idper=dc.idper
+where per.estado = 'T'
+SELECT * FROM areas;
+SELECT * FROM modulos;
+SELECT * from semestre;
+SELECT * from turno;
+SELECT * from destinos;
+
+
+
+
