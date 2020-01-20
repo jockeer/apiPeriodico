@@ -7,6 +7,8 @@ router.get('/api/obtenerUsuario/:usuario/:pass', db.obtenerUsuario);
 router.get('/api/obtenerCometarios/:idnoticia', db.obtenerCometarios);
 router.get('/api/obtenerUltimasCinco', db.obtenerUltimasCinco);
 router.get('/api/obtenerOtrasNotas', db.obtenerOtrasNotas);
+router.get('/api/obtenerEmpresas', db.obtenerEmpresas);
+router.get('/api/obtenerPublicidades', db.obtenerPublicidades);
 router.get('/api/obtenerUltimasCincoMontero', db.obtenerUltimasCincoMontero);
 router.get('/api/obtenerOtrasNotasMontero', db.obtenerOtrasNotasMontero);
 router.get('/api/obtenerUltimasCincoLocalidades', db.obtenerUltimasCincoLocalidades);
