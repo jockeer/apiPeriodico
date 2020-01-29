@@ -95,7 +95,7 @@ function obtenerUltimasCincoMontero(req, res, next) {
         });
 }
 function obtenerOtrasNotasMontero(req, res, next) {
-    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=1 and idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) ORDER BY idnoticia DESC) ORDER BY idnoticia DESC Limit 10`)
+    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=1 and n.idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) WHERE n.idcategoria=1 ORDER BY n.idnoticia DESC LIMIT 5) ORDER BY n.idnoticia DESC`)
         .then(function(data) {
             res.status(200).json({
                 status: 'success',
@@ -121,7 +121,7 @@ function obtenerUltimasCincoLocalidades(req, res, next) {
         });
 }
 function obtenerOtrasNotasLocalidades(req, res, next) {
-    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=2 and idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) ORDER BY idnoticia DESC) ORDER BY idnoticia DESC Limit 10`)
+    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=2 and n.idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) WHERE n.idcategoria=2 ORDER BY n.idnoticia DESC LIMIT 5) ORDER BY n.idnoticia DESC`)
         .then(function(data) {
             res.status(200).json({
                 status: 'success',
@@ -147,7 +147,7 @@ function obtenerUltimasCincoSantaCruz(req, res, next) {
         });
 }
 function obtenerOtrasNotasSantaCruz(req, res, next) {
-    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=3 and idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) ORDER BY idnoticia DESC) ORDER BY idnoticia DESC Limit 10`)
+    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=3 and n.idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) WHERE n.idcategoria=3 ORDER BY n.idnoticia DESC LIMIT 5) ORDER BY n.idnoticia DESC`)
         .then(function(data) {
             res.status(200).json({
                 status: 'success',
@@ -173,7 +173,7 @@ function obtenerUltimasCincoSeguridad(req, res, next) {
         });
 }
 function obtenerOtrasNotasSeguridad(req, res, next) {
-    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=4 and idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) ORDER BY idnoticia DESC) ORDER BY idnoticia DESC Limit 10`)
+    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=4 and n.idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) WHERE n.idcategoria=4 ORDER BY n.idnoticia DESC LIMIT 5) ORDER BY n.idnoticia DESC`)
         .then(function(data) {
             res.status(200).json({
                 status: 'success',
@@ -186,7 +186,7 @@ function obtenerOtrasNotasSeguridad(req, res, next) {
         });
 }
 function obtenerUltimasCincoDeportes(req, res, next) {
-    db.any(`SELECT n.idnoticia,n.titulo,n,subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria = 5 ORDER BY idnoticia DESC LIMIT 5`)
+    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria = 5 ORDER BY idnoticia DESC LIMIT 5`)
         .then(function(data) {
             res.status(200).json({
                 status: 'success',
@@ -199,7 +199,7 @@ function obtenerUltimasCincoDeportes(req, res, next) {
         });
 }
 function obtenerOtrasNotasDeportes(req, res, next) {
-    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=5 and idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) ORDER BY idnoticia DESC) ORDER BY idnoticia DESC Limit 10`)
+    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=5 and n.idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) WHERE n.idcategoria=5 ORDER BY n.idnoticia DESC LIMIT 5) ORDER BY n.idnoticia DESC`)
         .then(function(data) {
             res.status(200).json({
                 status: 'success',
@@ -225,7 +225,7 @@ function obtenerUltimasCincoSociales(req, res, next) {
         });
 }
 function obtenerOtrasNotasSociales(req, res, next) {
-    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=6 and idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) ORDER BY idnoticia DESC) ORDER BY idnoticia DESC Limit 10`)
+    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=6 and n.idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) WHERE n.idcategoria=6 ORDER BY n.idnoticia DESC LIMIT 5) ORDER BY n.idnoticia DESC`)
         .then(function(data) {
             res.status(200).json({
                 status: 'success',
@@ -251,7 +251,7 @@ function obtenerUltimasCincoNacional(req, res, next) {
         });
 }
 function obtenerOtrasNotasNacional(req, res, next) {
-    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=7 and idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) ORDER BY idnoticia DESC) ORDER BY idnoticia DESC Limit 10`)
+    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=7 and n.idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) WHERE n.idcategoria=7 ORDER BY n.idnoticia DESC LIMIT 5) ORDER BY n.idnoticia DESC`)
         .then(function(data) {
             res.status(200).json({
                 status: 'success',
@@ -277,7 +277,7 @@ function obtenerUltimasCincoInternacional(req, res, next) {
         });
 }
 function obtenerOtrasNotasInternacional(req, res, next) {
-    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=8 and idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) ORDER BY idnoticia DESC) ORDER BY idnoticia DESC Limit 10`)
+    db.any(`SELECT n.idnoticia,n.titulo,n.subtitulo,n.texto,n.fotografia,n.frase,n.fecha,ca.nombrecategoria,u.nombres,u.apellidos from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) INNER JOIN usuario u on(n.idusu = u.idusu) WHERE n.idcategoria=8 and n.idnoticia not IN (SELECT n.idnoticia from Noticia n INNER JOIN categoria ca on(n.idcategoria = ca.idcategoria) WHERE n.idcategoria=8 ORDER BY n.idnoticia DESC LIMIT 5) ORDER BY n.idnoticia DESC`)
         .then(function(data) {
             res.status(200).json({
                 status: 'success',
@@ -297,6 +297,48 @@ function obtenerCometarios(req, res, next) {
                 status: 'success',
                 data: data,
                 message: 'Cometario Obtenido'
+            });
+        })
+        .catch(function(err) {
+            return next(err);
+        });
+}
+function obtenerEditoriales(req, res, next) {
+    // let idnoticia = req.params.idnoticia;
+    db.any(`SELECT * from editorial ORDER BY ideditorial desc`)
+        .then(function(data) {
+            res.status(200).json({
+                status: 'success',
+                data: data,
+                message: 'Editoriales Obtenido'
+            });
+        })
+        .catch(function(err) {
+            return next(err);
+        });
+}
+function obtenerUltimaEditorial(req, res, next) {
+    // let idnoticia = req.params.idnoticia;
+    db.any(`SELECT * from editorial ORDER BY ideditorial DESC LIMIT 1`)
+        .then(function(data) {
+            res.status(200).json({
+                status: 'success',
+                data: data,
+                message: 'Editoriales Obtenido'
+            });
+        })
+        .catch(function(err) {
+            return next(err);
+        });
+}
+function obtenerURL(req, res, next) {
+    // let idnoticia = req.params.idnoticia;
+    db.any(`SELECT * from transmision`)
+        .then(function(data) {
+            res.status(200).json({
+                status: 'success',
+                data: data,
+                message: 'URL Obtenido'
             });
         })
         .catch(function(err) {
@@ -363,6 +405,34 @@ function InsertarPublicidad(req, res, next) {
             return next(err);
         });
 }
+function InsertarEditorial(req, res, next) {
+    db.none('insert into editorial(titulo,descripcion,fraserelevante,fecha,idusu) VALUES(${titulo},${descripcion},${fraserelevante},${fecha},${idusu})',
+            req.body)
+        .then(function() {
+            res.status(200)
+                .json({
+                    status: 'success',
+                    message: 'Registrado Correctamente'
+                });
+        })
+        .catch(function(err) {
+            return next(err);
+        });
+}
+
+function ActualizarTransmision(req, res, next) {
+    db.none('UPDATE transmision set url = $1 WHERE idtransmision = $2', [req.body.url,req.params.idtransmision])
+        .then(function() {
+            res.status(200)
+                .json({
+                    status: 'success',
+                    message: 'Actualizado Correcatemente'
+                });
+        })
+        .catch(function(err) {
+            return next(err);
+        });
+}
 
 
 
@@ -389,9 +459,14 @@ module.exports = {
     obtenerCometarios,
     obtenerEmpresas,
     obtenerPublicidades,
+    obtenerEditoriales,
+    obtenerUltimaEditorial,
+    obtenerURL,
     IngresarNota,
     IngresarComentario,
     InsertarEmpresa,
-    InsertarPublicidad
+    InsertarPublicidad,
+    InsertarEditorial,
+    ActualizarTransmision
 };
 

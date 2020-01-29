@@ -25,10 +25,18 @@ router.get('/api/obtenerUltimasCincoNacional', db.obtenerUltimasCincoNacional);
 router.get('/api/obtenerOtrasNotasNacional', db.obtenerOtrasNotasNacional);
 router.get('/api/obtenerUltimasCincoInternacional', db.obtenerUltimasCincoInternacional);
 router.get('/api/obtenerOtrasNotasInternacional', db.obtenerOtrasNotasInternacional);
+router.get('/api/obtenerEditoriales', db.obtenerEditoriales);
+router.get('/api/obtenerUltimaEditorial', db.obtenerUltimaEditorial);
+router.get('/api/obtenerURL', db.obtenerURL);
 
 router.post('/api/IngresarNota', db.IngresarNota);
 router.post('/api/IngresarComentario', db.IngresarComentario);
 router.post('/api/InsertarEmpresa', db.InsertarEmpresa);
 router.post('/api/InsertarPublicidad', db.InsertarPublicidad);
+router.post('/api/InsertarEditorial', db.InsertarEditorial);
+
+router.put('/api/ActualizarTransmision/:idtransmision', db.ActualizarTransmision);
+
+
 
 module.exports = router;
